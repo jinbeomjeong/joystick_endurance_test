@@ -7,7 +7,7 @@ from tqdm import tqdm
 
 
 data_root_path = "d:\\joystick"
-sample_name = 'RAW DATA 1'
+sample_name = 'RAW DATA 3'
 
 file_path_list = list()
 
@@ -20,9 +20,6 @@ file_path_list.sort()
 data_column_names = ['port_1_p(bar)', 'port_2_p(bar)', 'port_3_p(bar)', 'port_4_p(bar)', 'support_p(bar)', 'tank_p(bar)', 'temp(c)']
 float32_target_var = ['port_1_p(bar)', 'port_2_p(bar)', 'port_3_p(bar)', 'port_4_p(bar)','support_p(bar)', 'tank_p(bar)', 'time(hour)']
 uint8_target_var = ['temp(c)']
-
-column_types = {'port_1_p(bar)': 'float32', 'port_2_p(bar)': 'float32', 'port_3_p(bar)': 'float32',
-                'port_4_p(bar)': 'float32', 'support_p(bar)': 'float32', 'tank_p(bar)': 'float32', 'time(hour)': 'float32', 'temp(c)': 'float32'}
 
 
 def load_csv(path_list):
@@ -52,6 +49,6 @@ if __name__ == '__main__':
     for var in tqdm(uint8_target_var, desc='uint8 converting...'):
         result_df[var] = result_df[var].astype(np.float32).astype(np.uint8)
 
-    result_df.to_parquet('raw_data_1.parquet')
+    result_df.to_parquet('raw_data_3.parquet')
 
     print(result_df.info())
