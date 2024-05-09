@@ -7,7 +7,7 @@ from tqdm import tqdm
 
 
 data_root_path = "d:\\joystick"
-sample_name = 'RAW DATA 3'
+sample_name = 'RAW DATA 1'
 
 file_path_list = list()
 
@@ -49,6 +49,6 @@ if __name__ == '__main__':
     for var in tqdm(uint8_target_var, desc='uint8 converting...'):
         result_df[var] = result_df[var].astype(np.float32).astype(np.uint8)
 
-    result_df.to_parquet('raw_data_3.parquet')
+    result_df.to_parquet('raw_data_1.parquet.zstd', compression='zstd')
 
     print(result_df.info())
