@@ -1,0 +1,72 @@
+{
+    "raw_data_1": {
+        "time_p1(hour)": 1405.0699,
+        "start_port_1_p(bar)": 22.68,
+        "end_port_1_p(bar)": 15.47,
+        "time_p2(hour)": 1405.0702,
+        "start_port_2_p(bar)": 22.51,
+        "end_port_2_p(bar)": 16.45,
+        "time_p3(hour)": 1405.0701,
+        "start_port_3_p(bar)": 23.26,
+        "end_port_3_p(bar)": 14.31,
+        "time_p4(hour)": 1405.0699,
+        "start_port_4_p(bar)": 22.9,
+        "end_port_4_p(bar)": 18.49
+    },
+    "raw_data_2": {
+        "time_p1(hour)": 1416.5319,
+        "start_port_1_p(bar)": 22.92,
+        "end_port_1_p(bar)": 20.95,
+        "time_p2(hour)": 1416.5319,
+        "start_port_2_p(bar)": 23.27,
+        "end_port_2_p(bar)": 15.69,
+        "time_p3(hour)": 1416.5321,
+        "start_port_3_p(bar)": 22.72,
+        "end_port_3_p(bar)": 18.46,
+        "time_p4(hour)": 1416.532,
+        "start_port_4_p(bar)": 23.09,
+        "end_port_4_p(bar)": 21.64
+    },
+    "raw_data_3": {
+        "time_p1(hour)": 1395.1095,
+        "start_port_1_p(bar)": 22.25,
+        "end_port_1_p(bar)": 18.89,
+        "time_p2(hour)": 1395.1094,
+        "start_port_2_p(bar)": 22.63,
+        "end_port_2_p(bar)": 19.02,
+        "time_p3(hour)": 1395.1094,
+        "start_port_3_p(bar)": 23.49,
+        "end_port_3_p(bar)": 19.48,
+        "time_p4(hour)": 1395.1095,
+        "start_port_4_p(bar)": 22.54,
+        "end_port_4_p(bar)": 22.24
+    },
+    "raw_data_4": {
+        "time_p1(hour)": 1363.7473,
+        "start_port_1_p(bar)": 22.48,
+        "end_port_1_p(bar)": 20.41,
+        "time_p2(hour)": 1363.7473,
+        "start_port_2_p(bar)": 23.03,
+        "end_port_2_p(bar)": 19.37,
+        "time_p3(hour)": 1363.7472,
+        "start_port_3_p(bar)": 22.72,
+        "end_port_3_p(bar)": 19.98,
+        "time_p4(hour)": 1363.7471,
+        "start_port_4_p(bar)": 33.99,
+        "end_port_4_p(bar)": 22.31
+    },
+    "raw_data_5": {
+        "time_p1(hour)": 1387.5775,
+        "start_port_1_p(bar)": 23.22,
+        "end_port_1_p(bar)": 19.08,
+        "time_p2(hour)": 1387.5774,
+        "start_port_2_p(bar)": 22.45,
+        "end_port_2_p(bar)": 13.87,
+        "time_p3(hour)": 1387.5776,
+        "start_port_3_p(bar)": 22.16,
+        "end_port_3_p(bar)": 16.79,
+        "time_p4(hour)": 1387.5775,
+        "start_port_4_p(bar)": 22.29,
+        "end_port_4_p(bar)": 20.92
+    }
+}
