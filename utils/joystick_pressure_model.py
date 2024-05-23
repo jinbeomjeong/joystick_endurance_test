@@ -1,6 +1,4 @@
-import torch, sys, torchmetrics
-import numpy as np
-import pandas as pd
+import torch, sys
 import torch.nn as nn
 import torch.optim as optim
 import pytorch_lightning as pl
@@ -8,37 +6,38 @@ from pytorch_lightning.callbacks import TQDMProgressBar
 
 
 class JoystickPressureModel(pl.LightningModule):
-    def __init__(self, hidden_size=256, num_layers=2, learning_rate=0.003):
+    def __init__(self, hidden_size: int = 16, num_layers: int = 1, learning_rate=0.003):
         super(JoystickPressureModel, self).__init__()
 
         self.lr = learning_rate
-        self.__seq_len = 2800
         self.__model = nn.LSTM(input_size=2, hidden_size=hidden_size, num_layers=num_layers)
         self.fc = nn.Linear(in_features=hidden_size, out_features=1)
-        self.criterion = nn.MSELoss()
+        self.mse_loss_fc = nn.MSELoss(reduction='mean')
+        self.mae_loss_fc = nn.L1Loss(reduction='mean')
 
     def forward(self, input_data):
         out, _ = self.__model(input_data)
+        out = self.fc(out[:, -1])
 
         return out.squeeze()
 
     def training_step(self, batch, batch_idx):
-        data, labels = batch
+        data, label = batch
         pred = self.forward(data)
-        loss = self.criterion(pred, labels)
+        mse_loss = self.mse_loss_fc(pred, label)
 
-        self.log('train_loss', loss, prog_bar=True)
+        self.log(name='train_loss', value=mse_loss, prog_bar=True)
+        self.log(name='pressure_loss', value=self.mae_loss_fc(pred, label), prog_bar=False)
 
-        return loss
+        return mse_loss
 
     def validation_step(self, batch, batch_idx):
-        data, labels = batch
+        data, label = batch
         pred = self.forward(data)
-        loss = self.criterion(pred, labels)
-        #acc = (predictions.argmax(dim=1) == labels).float().mean()
+        mse_loss = self.mse_loss_fc(pred, label)
 
-        self.log('val_loss', loss, prog_bar=True)
-        #self.log('val_acc', acc, prog_bar=True)
+        self.log(name='val_loss', value=mse_loss, prog_bar=True)
+        self.log(name='pressure_loss', value=self.mae_loss_fc(pred, label), prog_bar=True)
 
     def configure_optimizers(self):
         return optim.Adam(self.parameters(), lr=self.lr)
