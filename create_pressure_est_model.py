@@ -7,13 +7,15 @@ from pytorch_lightning.loggers import CSVLogger
 if __name__ == '__main__':
     freeze_support()
 
-    csv_logger = CSVLogger("logs", name="est_pressure_model", version=2)
+    csv_logger = CSVLogger("logs", name="create_est_pressure", version=1)
 
-    seq_len = 2800*24
+    seq_len = 100
+    pred_distance = 1000
 
-    data = JoystickDataModule(dataset_path='result_peak_data.pkl', seq_len=seq_len, batch_size=50, n_of_worker=16)
-    model = JoystickPressureModel(hidden_size=64, learning_rate=0.003)
+    data = JoystickDataModule(dataset_path='result_peak_data.pkl', seq_len=seq_len, pred_distance=pred_distance,
+                              batch_size=500, n_of_worker=8)
+    model = JoystickPressureModel(hidden_size=1024, num_layers=1, learning_rate=0.001)
 
-    trainer = pl.Trainer(accelerator='gpu', devices='auto', max_epochs=5, enable_progress_bar=True, logger=csv_logger)
+    trainer = pl.Trainer(accelerator='gpu', devices='auto', max_epochs=1, enable_progress_bar=True, logger=csv_logger)
     trainer.fit(model=model, datamodule=data)
 
